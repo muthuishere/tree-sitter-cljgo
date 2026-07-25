@@ -26,6 +26,7 @@
   ],
   "scripts": {
     "gen": "node tools/gen-editors.js",
-    "check": "node tools/gen-editors.js --check"
+    "check": "node tools/gen-editors.js --check",
+    "ctx-pack": "ctx-optimize languages add . --name cljgo --out .ctxoptimize/grammars"
   }
 }

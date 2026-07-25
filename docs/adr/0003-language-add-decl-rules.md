@@ -1,7 +1,8 @@
 # ADR 0003 — Language add: the `decl_rules` contract
 
-Status: **ACCEPTED**, implemented. Depends on ctx-optimize shipping
-`decl_rules` (branch `spike/decl-rules`).
+Status: **ACCEPTED**, implemented. `decl_rules` is merged into ctx-optimize
+`main` and ships from 0.10.0; the pack's location was corrected by
+[ADR 0004](0004-pack-ships-where-it-is-read.md).
 
 How `ctx-optimize languages add` works for cljgo, and why it needs a pack
 format that did not previously exist.
@@ -133,8 +134,7 @@ regeneration and a fork divergence; as data it is a one-line edit.
 ## Verification
 
 ```sh
-ctx-optimize languages add https://github.com/muthuishere/tree-sitter-cljgo
-cp ctxoptimize/cljgo.json ~/ctxoptimize/grammars/cljgo.json
+npm run ctx-pack        # wasm beside the committed .ctxoptimize/grammars/cljgo.json
 ctx-optimize up && ctx-optimize query "fetch-user"
 ```
 

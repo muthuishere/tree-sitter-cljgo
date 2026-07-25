@@ -9,7 +9,7 @@ pack, all driven from one file.
 definers.json ──► queries/generated/definers.scm       nvim · Helix · Zed
               ──► editors/emacs/generated/definers.el   Emacs
               ──► editors/vscode/generated/definers.json VS Code
-              ──► ctxoptimize/cljgo.json                 ctx-optimize
+              ──► .ctxoptimize/grammars/cljgo.json      ctx-optimize
 ```
 
 ## Why one file
@@ -121,15 +121,26 @@ patterns first. In `locals.scm`, rename `@local.definition.var` →
 
 ## ctx-optimize
 
+The pack is committed at `.ctxoptimize/grammars/cljgo.json` — the path
+ctx-optimize reads, and reads *before* the machine-wide directory. Only the
+parser wasm is missing from a fresh clone, because `*.wasm` is gitignored:
+
 ```sh
-ctx-optimize languages add https://github.com/muthuishere/tree-sitter-cljgo
-cp ctxoptimize/cljgo.json ~/ctxoptimize/grammars/cljgo.json   # the reviewed mapping
+npm run ctx-pack        # builds .ctxoptimize/grammars/cljgo.wasm beside the JSON
 ctx-optimize up
 ctx-optimize query "fetch-user"
 ```
 
-Or commit the pack with your project — `.ctxoptimize/grammars/` is read before
-the machine-wide directory, so your own definers travel with your repo.
+`ctx-pack` builds from this repo's own `grammar.js` — no network — and keeps the
+committed mapping rather than overwriting it. Verified against an **empty**
+machine-wide grammars dir: 20 function, 22 variable and 7 module nodes across the
+7 `.cljg` examples, none named after a defining macro. See
+[ADR 0004](docs/adr/0004-pack-ships-where-it-is-read.md).
+
+To use cljgo in **your** project, copy that JSON into your repo's own
+`.ctxoptimize/grammars/` and add your project's definers to `head_match`; the
+repo-local pack wins over the machine-wide one, so your definers travel with your
+code.
 
 ### Why the pack uses `decl_rules`
 

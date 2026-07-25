@@ -26,7 +26,7 @@ Four hand-maintained copies. They drifted immediately: bri's `defcommand` /
 definers.json ──► queries/generated/definers.scm        nvim · Helix · Zed
               ──► editors/emacs/generated/definers.el    Emacs
               ──► editors/vscode/generated/definers.json VS Code (TM injection)
-              ──► ctxoptimize/cljgo.json                 ctx-optimize
+              ──► .ctxoptimize/grammars/cljgo.json      ctx-optimize
 ```
 
 ```sh

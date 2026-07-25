@@ -129,7 +129,7 @@ const outputs = {
   "queries/generated/definers.scm": tsQuery(),
   "editors/emacs/generated/definers.el": elisp(),
   "editors/vscode/generated/definers.json": tmGrammar(),
-  "ctxoptimize/cljgo.json": pack(),
+  ".ctxoptimize/grammars/cljgo.json": pack(),
 };
 
 const check = process.argv.includes("--check");
