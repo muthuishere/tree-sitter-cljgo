@@ -191,6 +191,14 @@ A query that *loads* is not a query that *matches* — when you add a definer,
 extend an `examples/*.cljg` to exercise it and confirm it appears in the
 `--captures` output.
 
+## Design decisions
+
+| # | |
+|---|---|
+| [0001](docs/adr/0001-adopt-dont-fork.md) | The grammar stays stock Clojure syntax — permanent, not provisional |
+| [0002](docs/adr/0002-definers-single-source.md) | `definers.json` is the single source of truth |
+| [0003](docs/adr/0003-language-add-decl-rules.md) | Language add: the `decl_rules` contract |
+
 ## Lineage
 
 Forked from `sogaiu/tree-sitter-clojure` (same license). Credit to its authors,

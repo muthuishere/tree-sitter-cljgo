@@ -7,4 +7,9 @@ build
 
 # built parser artifacts
 *.wasm
+*.dylib
+*.so
+*.dll
 build/
+
+.DS_Store
