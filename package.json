@@ -1,16 +1,31 @@
 {
   "name": "tree-sitter-cljgo",
   "version": "0.0.13",
-  "description": "Clojure grammar for tree-sitter",
+  "description": "Tree-sitter grammar for cljgo (Clojure hosted on Go), plus editor queries and a ctx-optimize pack",
   "tree-sitter": [
     {
-      "scope": "source.clojure",
+      "scope": "source.cljgo",
       "file-types": [
-        "bb",
+        "cljgo",
+        "cljg",
         "clj",
-        "cljc",
-        "cljs"
+        "cljc"
+      ],
+      "highlights": [
+        "queries/highlights.scm",
+        "queries/cljgo-highlights.scm",
+        "queries/generated/definers.scm"
+      ],
+      "injections": [
+        "queries/injections.scm"
+      ],
+      "locals": [
+        "queries/locals.scm"
       ]
     }
-  ]
+  ],
+  "scripts": {
+    "gen": "node tools/gen-editors.js",
+    "check": "node tools/gen-editors.js --check"
+  }
 }

@@ -3,3 +3,8 @@ bin
 build
 *.log
 
+
+
+# built parser artifacts
+*.wasm
+build/
